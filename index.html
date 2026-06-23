@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Joyeux Anniversaire Ma Dulcinée</title>
+  <style>
+    body { 
+      background-image: url('1772420797141.jpg'); 
+      background-size: cover; 
+      background-attachment: fixed;
+      background-position: center;
+      text-align: center; 
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      text-shadow: 2px 2px 6px #000;
+      margin: 0;
+      padding: 0;
+    }
+    .container { 
+      padding: 30px; 
+      background: rgba(0,0,0,0.5);
+      border-radius: 25px;
+      max-width: 850px;
+      margin: 40px auto;
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.4);
+    }
+    h1 { color: #ffcc00; font-size: 2.2em; }
+    mark { background: #ff4d6d; color: white; padding: 5px 10px; border-radius: 8px; }
+    
+    button {
+      padding: 18px 35px;
+      font-size: 20px;
+      background: linear-gradient(45deg, #ff4d6d, #ff8fa3);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(255, 77, 109, 0.5);
+    }
+    button:hover { transform: scale(1.1) rotate(-2deg); }
+    
+    #bougies span { 
+      font-size: 55px; 
+      margin: 8px; 
+      display: inline-block;
+      animation: clignoter 1.2s infinite alternate;
+    }
+    @keyframes clignoter { 
+      0% { transform: scale(1) rotate(-5deg); opacity: 0.8; } 
+      100% { transform: scale(1.1) rotate(5deg); opacity: 1; } 
+    }
+    
+    /* ANIMATION PHOTOS CŒUR QUI BAT */
+    #photos { 
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+      gap: 25px; 
+      margin-top: 30px; 
+    }
+    .photo-anim { 
+      width: 190px; 
+      height: 190px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 7px solid #ff4d6d;
+      box-shadow: 0 0 25px rgba(255, 77, 109, 0.6);
+      animation: apparaitreBattre 1.8s ease-out forwards;
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    @keyframes apparaitreBattre {
+      0% { opacity: 0; transform: scale(0) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.25) rotate(180deg); }
+      70% { transform: scale(0.9) rotate(270deg); }
+      100% { opacity: 1; transform: scale(1) rotate(360deg); }
+    }
+
+    .photo-anim {
+      animation: apparaitreBattre 1.8s ease-out forwards, battre 1.4s ease-in-out infinite;
+    }
+
+    @keyframes battre {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255, 77, 109, 0.6); }
+      50% { transform: scale(1.12); box-shadow: 0 0 45px rgba(255, 77, 109, 1); }
+    }
+
+    blockquote { 
+      font-style: italic; 
+      margin: 18px auto; 
+      max-width: 650px;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><u>Joyeux Anniversaire Mme SOSSOU Réoboth Light</u> 🎆🎉</h1>
+    <p><strong>POUR TOI MA DULCINÉE</strong></p>
+    <button id="btn"><mark>Clique pour Découvrir le cadeau</mark></button>
+    
+    <div id="cadeau" style="display: none;">
+      <p><em><strong>Tu as</strong></em> <span id="nb-bougies">16</span> <strong><em>bougies à souffler ! 🌬️</em></strong></p>
+      <div id="bougies"></div>
+      <div id="photos"></div>
+      
+      <h1>Ma Chérie, mon Amour, mon Tout 😊❤️</h1>
+      
+      <blockquote>Joyeux Anniversaire à la femme la plus incroyable, la plus belle, la plus intelligente et la plus aimante que j'ai jamais rencontrée 😍.</blockquote>
+      <blockquote>Aujourd'hui, c'est ton jour, et je veux que tu saches à quel point tu es spéciale pour moi.</blockquote>
+      <blockquote>Depuis le jour où je t'ai rencontrée, ma vie a changé de manière incroyable.</blockquote>
+      <blockquote>Tu as apporté de la lumière, de la joie et de l'amour dans mon cœur.</blockquote>
+      <blockquote>Tu es ma meilleure amie, ma confidente, ma partenaire dans tous les sens du terme 😘.</blockquote>
+      <blockquote>Je suis tellement reconnaissant pour chaque moment que nous avons passé ensemble. Tu es la raison pour laquelle je me lève le matin.</blockquote>
+      <blockquote>Joyeux Anniversaire, ma chérie ! Je t'aime plus que tout au monde 🌹❤️😊.</blockquote>
+      
+      <p><em>Beaucoup de 25/06 dans ta vie 💐💐</em></p>
+      <p><strong>Je t'aime ❤️</strong></p>
+      
+      <!-- Audio caché, lecture auto -->
+      <audio id="musique" src="anniversaire.mp3" loop autoplay></audio>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('btn').onclick = function() {
+      document.getElementById('cadeau').style.display = 'block';
+      document.getElementById('btn').style.display = 'none';
+      
+      // Musique qui joue en arrière-plan
+      var musique = document.getElementById('musique');
+      musique.volume = 0.5; // Volume à 50% pour pas agresser
+      musique.play().catch(function(error) {
+        alert("Si la musique ne joue pas, clique 1 fois sur la page puis sur le bouton. Les navigateurs bloquent l'autoplay 😊");
+      });
+      
+      // Bougies qui clignotent
+      const bougies = document.getElementById('bougies');
+      for (let i = 0; i < 16; i++) {
+        const b = document.createElement('span');
+        b.innerHTML = '🕯️';
+        b.style.animationDelay = `${i * 0.08}s`;
+        bougies.appendChild(b);
+      }
+      
+      // Photos qui battent
+      const photos = document.getElementById('photos');
+      const images = ['InShot_20260205_161717740.jpg', '1767326186470.jpg', 'InShot_20251205_003945354.jpg'];
+      images.forEach((img, i) => {
+        const p = document.createElement('img');
+        p.src = img;
+        p.className = 'photo-anim';
+        p.style.animationDelay = `${i * 0.5}s, ${1.8 + i * 0.5}s`;
+        photos.appendChild(p);
+      });
+    };
+  </script>
+</body>
+</html>
